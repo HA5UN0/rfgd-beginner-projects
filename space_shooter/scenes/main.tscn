@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2jetwafg6kgt"]
+
+[ext_resource type="Texture2D" uid="uid://1ltne3wbswto" path="res://art/kenney_space-shooter-redux/Backgrounds/purple.png" id="1_t77up"]
+[ext_resource type="Texture2D" uid="uid://bqf8ynfi2nw82" path="res://art/kenney_space-shooter-redux/PNG/playerShip2_blue.png" id="2_ps4yw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3fx7f"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_81mjf"]
+font_size = 70
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvrvi"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(265.5, 481)
+scale = Vector2(2.10547, 3.78906)
+texture = ExtResource("1_t77up")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 533.0
+offset_bottom = 962.0
+
+[node name="LabelScore" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 351.0
+offset_bottom = 124.0
+text = "Score:0"
+label_settings = SubResource("LabelSettings_3fx7f")
+vertical_alignment = 1
+
+[node name="LabelGameOver" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 83.0
+offset_top = 324.0
+offset_right = 463.0
+offset_bottom = 448.0
+text = "Game Over
+"
+label_settings = SubResource("LabelSettings_81mjf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(274, 874)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_mvrvi")
+
+[node name="playerBody" type="Sprite2D" parent="Player"]
+texture_filter = 1
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_ps4yw")
