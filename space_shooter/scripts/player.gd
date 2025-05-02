@@ -3,9 +3,9 @@ extends Area2D
 @export var laser_tcsn: PackedScene
 @onready var mainScene = $".."
 
-func _process(delta):
+func _process(_delta):
 	var mouse_pos = get_global_mouse_position()
-	position.x = mouse_pos
+	position.x = mouse_pos.x
 	
 	#shoot laser
 	if Input.is_action_just_pressed("fire"):
