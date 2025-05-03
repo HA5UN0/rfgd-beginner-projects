@@ -23,11 +23,13 @@ position = Vector2(274, 874)
 script = ExtResource("1_34lnp")
 
 [node name="playerBody" type="Sprite2D" parent="Player"]
+z_index = 5
 texture_filter = 1
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_ps4yw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+z_index = 5
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_mvrvi")
 
@@ -38,6 +40,7 @@ scale = Vector2(2.10547, 3.78906)
 texture = ExtResource("1_t77up")
 
 [node name="Control" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 533.0
