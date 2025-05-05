@@ -69,4 +69,9 @@ label_settings = SubResource("LabelSettings_81mjf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="EnemySpawner" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+autostart = true
+
 [connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
