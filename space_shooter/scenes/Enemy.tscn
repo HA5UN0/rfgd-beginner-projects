@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://l6pm7hn2rl2h"]
 
-[ext_resource type="Texture2D" uid="uid://bnlygo8kh36bf" path="res://art/kenney_space-shooter-redux/PNG/Enemies/enemyBlack1.png" id="1_0ux3x"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5aolh"]
+[ext_resource type="Script" path="res://scripts/enemy_sprite_2d.gd" id="3_3jo7a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pv4p4"]
 radius = 36.6742
@@ -12,7 +12,7 @@ script = ExtResource("1_5aolh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
-texture = ExtResource("1_0ux3x")
+script = ExtResource("3_3jo7a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
