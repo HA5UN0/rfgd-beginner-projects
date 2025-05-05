@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://l6pm7hn2rl2h"]
+
+[ext_resource type="Texture2D" uid="uid://bnlygo8kh36bf" path="res://art/kenney_space-shooter-redux/PNG/Enemies/enemyBlack1.png" id="1_0ux3x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pv4p4"]
+radius = 36.6742
+
+[node name="Enemy" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0ux3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pv4p4")
