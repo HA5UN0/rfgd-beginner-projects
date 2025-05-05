@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2jetwafg6kgt"]
+[gd_scene load_steps=9 format=3 uid="uid://b2jetwafg6kgt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_34lnp"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_lic38"]
 [ext_resource type="Texture2D" uid="uid://1ltne3wbswto" path="res://art/kenney_space-shooter-redux/Backgrounds/purple.png" id="1_t77up"]
 [ext_resource type="Texture2D" uid="uid://bqf8ynfi2nw82" path="res://art/kenney_space-shooter-redux/PNG/playerShip2_blue.png" id="2_ps4yw"]
+[ext_resource type="PackedScene" uid="uid://d3157xmvk4kxg" path="res://scenes/laser.tscn" id="5_fjmwy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvrvi"]
 radius = 57.3149
@@ -21,6 +22,7 @@ script = ExtResource("1_lic38")
 z_index = 1
 position = Vector2(274, 874)
 script = ExtResource("1_34lnp")
+laser_tcsn = ExtResource("5_fjmwy")
 
 [node name="playerBody" type="Sprite2D" parent="Player"]
 z_index = 5
