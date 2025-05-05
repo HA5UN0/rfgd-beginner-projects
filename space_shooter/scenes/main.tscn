@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2jetwafg6kgt"]
+[gd_scene load_steps=13 format=3 uid="uid://b2jetwafg6kgt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_34lnp"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_lic38"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://l6pm7hn2rl2h" path="res://scenes/enemy.tscn" id="6_7asll"]
 [ext_resource type="Script" path="res://scripts/label_score.gd" id="6_7frld"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_wj17k"]
+[ext_resource type="Script" path="res://scripts/label_game_over.gd" id="7_8sa31"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvrvi"]
 radius = 57.3149
@@ -72,6 +73,7 @@ text = "Game Over
 label_settings = SubResource("LabelSettings_81mjf")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("7_8sa31")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("6_wj17k")
