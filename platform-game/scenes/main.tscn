@@ -23,6 +23,7 @@ size = Vector2(1177, 34)
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
+z_index = -1
 
 [node name="Top" type="Node" parent="Background"]
 

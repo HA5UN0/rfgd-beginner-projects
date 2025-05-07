@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://4qpg3ndqb7um"]
+
+[ext_resource type="Texture2D" uid="uid://bs0ytthm8gunk" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0002.png" id="1_mt8p6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d61ln"]
+size = Vector2(42, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjnxq"]
+size = Vector2(32, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpycg"]
+size = Vector2(60, 57)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_mt8p6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_d61ln")
+
+[node name="jumpBox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpBox"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_sjnxq")
+
+[node name="hurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_hpycg")
