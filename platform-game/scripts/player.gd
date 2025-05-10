@@ -49,6 +49,7 @@ var gameWin: bool = false
 # -------------- FUNCTIONS -------------- #
 
 func _process(delta):
+	#print("current vel.y: ", velocity.y)
 	# show coin text
 	coinText.text = str(coinCount)
 	
@@ -78,20 +79,32 @@ func randomOffset():
 
 # player movement, gravity, velocity
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# reset jumps
 	if is_on_floor():
 		timesJumped = 0
+		
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+	#if !is_on_floor():
+	#	velocity.y += gravity
+	#	if velocity.y < 1000: # limits max jump height 
+	#		velocity.y = 1000
 	
-	if !is_on_floor():
-		velocity.y += gravity
-		if velocity.y > 1000: # limits max jump height 
-				velocity.y = 1000
-	
+	# player jump
+	var JUMP_VELOCITY = -700
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		
 	# player jump action
-	if Input.is_action_just_pressed("jump") and timesJumped < 2 and gameOver == false and gameWin == false:
-		velocity.y -jump_force
-		timesJumped += 1
+	#if Input.is_action_just_pressed("jump") and timesJumped < 2 and gameOver == false and gameWin == false:
+	#	velocity.y -jump_force
+	#	timesJumped += 1
+		print("timesJumped: ", timesJumped)
+		print("velocity.y: ", velocity.y)
+		print("jump_force: ", jump_force)
 		
 	# player input left and right movement
 	var horizontal_movement = Input.get_axis("move_left", "move_right")
