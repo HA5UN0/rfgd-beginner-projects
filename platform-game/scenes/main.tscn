@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkxj04f1oe06e"]
+[gd_scene load_steps=28 format=3 uid="uid://bkxj04f1oe06e"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_6vdgp"]
 [ext_resource type="Texture2D" uid="uid://b5vpj65yuv578" path="res://art/kenney_pixel-platformer/Tiles/Backgrounds/tile_0003.png" id="1_a41bf"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="7_s6kgg"]
 [ext_resource type="Texture2D" uid="uid://c1ck4xtcgjif4" path="res://art/kenney_pixel-platformer/Tiles/tile_0044.png" id="8_huvbq"]
 [ext_resource type="PackedScene" uid="uid://4qpg3ndqb7um" path="res://scenes/player.tscn" id="12_s6bxy"]
+[ext_resource type="Texture2D" uid="uid://dvwnxyf3cyuwe" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0021.png" id="13_ocbec"]
+[ext_resource type="Texture2D" uid="uid://2dm7pe60sno8" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0022.png" id="14_05p7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_didgo"]
 size = Vector2(478, 49)
@@ -40,6 +42,89 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 50
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ceqo"]
+size = Vector2(70, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah3op"]
+size = Vector2(72, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y55u"]
+size = Vector2(71, 13)
+
+[sub_resource type="Animation" id="Animation_1b2w1"]
+resource_name = "dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_u6gea"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("13_ocbec"), ExtResource("14_05p7p")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvt8x"]
+_data = {
+"RESET": SubResource("Animation_u6gea"),
+"dead": SubResource("Animation_1b2w1")
+}
 
 [node name="main" type="Node2D"]
 
@@ -989,7 +1074,9 @@ texture = ExtResource("3_hnwfr")
 
 [node name="longPlatform" type="StaticBody2D" parent="."]
 z_index = 1
-position = Vector2(42, 381)
+position = Vector2(7, 348)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="longPlatform"]
 position = Vector2(217, 0.5)
@@ -1041,7 +1128,9 @@ texture = ExtResource("6_8mbom")
 
 [node name="mediumPlatform" type="StaticBody2D" parent="."]
 z_index = 1
-position = Vector2(386, 309)
+position = Vector2(669, 269)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mediumPlatform"]
 position = Vector2(134.25, 0)
@@ -1078,7 +1167,9 @@ texture = ExtResource("6_8mbom")
 
 [node name="shortPlatform" type="StaticBody2D" parent="."]
 z_index = 1
-position = Vector2(666, 208)
+position = Vector2(526, 393)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shortPlatform"]
 position = Vector2(54, 0.5)
@@ -1201,3 +1292,38 @@ texture = ExtResource("8_huvbq")
 z_index = 1
 position = Vector2(114, 238)
 jump_force = 450
+
+[node name="MainEnemyOne" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(23, 269)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MainEnemyOne"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("13_ocbec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainEnemyOne"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_0ceqo")
+
+[node name="enemy" type="Area2D" parent="MainEnemyOne"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainEnemyOne/enemy"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_ah3op")
+
+[node name="enemyHurtBox" type="Area2D" parent="MainEnemyOne"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainEnemyOne/enemyHurtBox"]
+position = Vector2(0.5, -23)
+shape = SubResource("RectangleShape2D_7y55u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainEnemyOne"]
+libraries = {
+"": SubResource("AnimationLibrary_tvt8x")
+}
+
+[node name="Marker2D" type="Marker2D" parent="MainEnemyOne"]
+position = Vector2(215, 0)
