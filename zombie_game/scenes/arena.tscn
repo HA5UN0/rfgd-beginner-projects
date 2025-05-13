@@ -284,6 +284,9 @@ texture = ExtResource("1_5upg4")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 256)
 
+[node name="scree _shake_timer" type="Timer" parent="Camera2D"]
+one_shot = true
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Control" type="Control" parent="UI"]
