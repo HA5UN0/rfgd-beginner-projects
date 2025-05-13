@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf3y5owpfp0oo"]
+[gd_scene load_steps=4 format=3 uid="uid://bf3y5owpfp0oo"]
 
 [ext_resource type="Texture2D" uid="uid://dp4afx6m5xf2x" path="res://art/kenney_top-down-shooter/PNG/Hitman 1/hitman1_machine.png" id="1_tqyui"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_y8nt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4oi5r"]
 size = Vector2(25, 41.75)
@@ -9,6 +10,7 @@ size = Vector2(25, 41.75)
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("1_tqyui")
+script = ExtResource("2_y8nt7")
 
 [node name="Reload_speed" type="Timer" parent="."]
 wait_time = 0.2
@@ -21,3 +23,6 @@ shape = SubResource("RectangleShape2D_4oi5r")
 
 [node name="aimspot" type="Area2D" parent="."]
 position = Vector2(24.5, 9.5)
+
+[connection signal="timeout" from="Reload_speed" to="." method="_on_reload_speed_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
