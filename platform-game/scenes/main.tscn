@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bkxj04f1oe06e"]
+[gd_scene load_steps=29 format=3 uid="uid://bkxj04f1oe06e"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_6vdgp"]
 [ext_resource type="Texture2D" uid="uid://b5vpj65yuv578" path="res://art/kenney_pixel-platformer/Tiles/Backgrounds/tile_0003.png" id="1_a41bf"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c1ck4xtcgjif4" path="res://art/kenney_pixel-platformer/Tiles/tile_0044.png" id="8_huvbq"]
 [ext_resource type="PackedScene" uid="uid://4qpg3ndqb7um" path="res://scenes/player.tscn" id="12_s6bxy"]
 [ext_resource type="Texture2D" uid="uid://dvwnxyf3cyuwe" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0021.png" id="13_ocbec"]
+[ext_resource type="Script" path="res://scripts/main_enemy_one.gd" id="13_rxf88"]
 [ext_resource type="Texture2D" uid="uid://2dm7pe60sno8" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0022.png" id="14_05p7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_didgo"]
@@ -114,7 +115,7 @@ tracks/2/path = NodePath("Sprite2D:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.233333),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("13_ocbec"), ExtResource("14_05p7p")]
@@ -1289,15 +1290,19 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("8_huvbq")
 
 [node name="Player" parent="." instance=ExtResource("12_s6bxy")]
-z_index = 1
-position = Vector2(114, 238)
+z_index = 2
+position = Vector2(363, 245)
 jump_force = 450
 
-[node name="MainEnemyOne" type="CharacterBody2D" parent="."]
+[node name="MainEnemyOne" type="CharacterBody2D" parent="." node_paths=PackedStringArray("endPoint")]
 z_index = 1
-position = Vector2(23, 269)
+position = Vector2(23, 286)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("13_rxf88")
+speed = 50
+limit = 1.0
+endPoint = NodePath("Marker2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="MainEnemyOne"]
 texture_filter = 1
@@ -1326,4 +1331,4 @@ libraries = {
 }
 
 [node name="Marker2D" type="Marker2D" parent="MainEnemyOne"]
-position = Vector2(215, 0)
+position = Vector2(387, 0)
