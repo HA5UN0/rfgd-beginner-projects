@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0iujxpm0eojt"]
+
+[ext_resource type="Texture2D" uid="uid://b8vxlje5emkyv" path="res://art/kenney_top-down-shooter/PNG/Tiles/tile_12.png" id="1_haipn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb88n"]
+size = Vector2(64, 64)
+
+[node name="Bullet" type="Sprite2D"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_haipn")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy_damager"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_xb88n")
