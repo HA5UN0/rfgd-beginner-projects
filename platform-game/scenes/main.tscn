@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bkxj04f1oe06e"]
+[gd_scene load_steps=34 format=3 uid="uid://bkxj04f1oe06e"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_6vdgp"]
 [ext_resource type="Texture2D" uid="uid://b5vpj65yuv578" path="res://art/kenney_pixel-platformer/Tiles/Backgrounds/tile_0003.png" id="1_a41bf"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dvwnxyf3cyuwe" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0021.png" id="13_ocbec"]
 [ext_resource type="Script" path="res://scripts/main_enemy_one.gd" id="13_rxf88"]
 [ext_resource type="Texture2D" uid="uid://2dm7pe60sno8" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0022.png" id="14_05p7p"]
+[ext_resource type="Texture2D" uid="uid://cud20egbc5bu4" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0011.png" id="16_spii6"]
+[ext_resource type="Texture2D" uid="uid://d0o71c1fnghfg" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0012.png" id="17_ba58k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_didgo"]
 size = Vector2(478, 49)
@@ -125,6 +127,55 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_u6gea"),
 "dead": SubResource("Animation_1b2w1")
+}
+
+[sub_resource type="Animation" id="Animation_o7587"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m0ewl"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("16_spii6"), ExtResource("17_ba58k")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_acgmv"]
+_data = {
+"RESET": SubResource("Animation_m0ewl"),
+"dead": SubResource("Animation_o7587")
 }
 
 [node name="main" type="Node2D"]
@@ -1129,7 +1180,7 @@ texture = ExtResource("6_8mbom")
 
 [node name="mediumPlatform" type="StaticBody2D" parent="."]
 z_index = 1
-position = Vector2(669, 269)
+position = Vector2(828, 183)
 collision_layer = 3
 collision_mask = 3
 
@@ -1168,7 +1219,7 @@ texture = ExtResource("6_8mbom")
 
 [node name="shortPlatform" type="StaticBody2D" parent="."]
 z_index = 1
-position = Vector2(526, 393)
+position = Vector2(602, 387)
 collision_layer = 3
 collision_mask = 3
 
@@ -1332,3 +1383,45 @@ libraries = {
 
 [node name="Marker2D" type="Marker2D" parent="MainEnemyOne"]
 position = Vector2(387, 0)
+
+[node name="MainEnemyTwo" type="CharacterBody2D" parent="." node_paths=PackedStringArray("endPoint")]
+z_index = 1
+position = Vector2(530, 263)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("13_rxf88")
+speed = 80
+limit = 1.0
+endPoint = NodePath("Marker2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainEnemyTwo"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("16_spii6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainEnemyTwo"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_0ceqo")
+
+[node name="enemy" type="Area2D" parent="MainEnemyTwo"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainEnemyTwo/enemy"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_ah3op")
+
+[node name="enemyHurtBox" type="Area2D" parent="MainEnemyTwo"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainEnemyTwo/enemyHurtBox"]
+visible = false
+position = Vector2(0.5, -23)
+shape = SubResource("RectangleShape2D_7y55u")
+disabled = true
+
+[node name="Marker2D" type="Marker2D" parent="MainEnemyTwo"]
+position = Vector2(1, 151)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainEnemyTwo"]
+libraries = {
+"": SubResource("AnimationLibrary_acgmv")
+}
