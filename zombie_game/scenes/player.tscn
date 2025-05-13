@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf3y5owpfp0oo"]
+
+[ext_resource type="Texture2D" uid="uid://dp4afx6m5xf2x" path="res://art/kenney_top-down-shooter/PNG/Hitman 1/hitman1_machine.png" id="1_tqyui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4oi5r"]
+size = Vector2(25, 41.75)
+
+[node name="Player" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_tqyui")
+
+[node name="Reload_speed" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-9, 0)
+shape = SubResource("RectangleShape2D_4oi5r")
+
+[node name="aimspot" type="Area2D" parent="."]
+position = Vector2(24.5, 9.5)
