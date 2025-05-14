@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	# freeze proccesses
+	# freeze processes inside of blood_particles
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(false)
