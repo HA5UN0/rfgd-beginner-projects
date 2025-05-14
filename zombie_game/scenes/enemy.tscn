@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dov4374lm5hn4"]
+
+[ext_resource type="Texture2D" uid="uid://bjw8auv6b3uql" path="res://art/kenney_top-down-shooter/PNG/Zombie 1/zoimbie1_hold.png" id="1_42dw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pspe"]
+size = Vector2(34, 48)
+
+[node name="Enemy" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_42dw1")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_1pspe")
+
+[node name="stun_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
