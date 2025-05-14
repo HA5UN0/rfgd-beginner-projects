@@ -16,6 +16,11 @@ var is_dead = false
 # ----------- functions --------------- #
 
 func _ready() -> void:
+	# add to area script later then delete
+	#Global.node_creation_parent = $".."
+	# add to area script later then delete
+
+	
 	Global.player = self
 	Global.gameOff = false
 	
@@ -29,8 +34,9 @@ func _process(delta: float) -> void:
 	
 	velocity = velocity.normalized() # keeps diagonal movement speed consistent
 	
-	global_position.x = clamp(global_position.x, 20, 620)
-	global_position.y = clamp(global_position.y, 20, 340)
+	# limits player movement to viewport 
+	global_position.x = clamp(global_position.x, 20, 1152)
+	global_position.y = clamp(global_position.y, 20, 648)
 	
 	if is_dead == false:
 		global_position += speed * velocity * delta

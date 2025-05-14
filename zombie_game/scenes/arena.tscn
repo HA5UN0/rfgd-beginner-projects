@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8os623kejcn"]
+[gd_scene load_steps=5 format=3 uid="uid://b8os623kejcn"]
 
 [ext_resource type="Texture2D" uid="uid://bxwmucyfi6yp" path="res://art/kenney_top-down-shooter/PNG/Tiles/tile_43.png" id="1_5upg4"]
+[ext_resource type="PackedScene" uid="uid://bf3y5owpfp0oo" path="res://scenes/player.tscn" id="3_j0rpq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m87dx"]
 font_size = 130
@@ -11,6 +12,7 @@ font_size = 60
 [node name="Arena" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
+position = Vector2(64, 64)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 texture_filter = 1
@@ -282,12 +284,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_5upg4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(512, 256)
+position = Vector2(576, 328)
 
 [node name="scree _shake_timer" type="Timer" parent="Camera2D"]
 one_shot = true
 
 [node name="UI" type="Node2D" parent="."]
+position = Vector2(64, 72)
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
@@ -325,3 +328,6 @@ autostart = true
 
 [node name="Difficulty_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Player" parent="." instance=ExtResource("3_j0rpq")]
+position = Vector2(584, 320)
