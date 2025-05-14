@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch1nk7e4n3oc5"]
+
+[ext_resource type="Texture2D" uid="uid://cebgr2u3eqefr" path="res://art/kenney_top-down-shooter/PNG/Tiles/tile_132.png" id="1_bubra"]
+
+[node name="Blood_particles" type="CPUParticles2D"]
+amount = 15
+lifetime = 0.2
+explosiveness = 1.0
+texture = ExtResource("1_bubra")
+spread = 18.9
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 656.0
+scale_amount_min = 0.04
+color = Color(1, 0, 0, 0.196078)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+autostart = true
