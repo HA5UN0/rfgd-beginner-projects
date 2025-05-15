@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8os623kejcn"]
+[gd_scene load_steps=8 format=3 uid="uid://b8os623kejcn"]
 
 [ext_resource type="Texture2D" uid="uid://bxwmucyfi6yp" path="res://art/kenney_top-down-shooter/PNG/Tiles/tile_43.png" id="1_5upg4"]
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_x7jel"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_jrtat"]
 [ext_resource type="PackedScene" uid="uid://bf3y5owpfp0oo" path="res://scenes/player.tscn" id="3_j0rpq"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="4_keo57"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m87dx"]
 font_size = 130
@@ -316,6 +317,7 @@ text = "100"
 label_settings = SubResource("LabelSettings_m87dx")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_keo57")
 
 [node name="Highscore" type="Label" parent="UI/Control"]
 layout_mode = 0
